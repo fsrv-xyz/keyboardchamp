@@ -31,6 +31,12 @@ func init() {
 			keycode.KeyCode4,
 		}}}
 	})
+	RegistryInstance.Register("puppet_agent_test_bob_dev_noop", func() Action {
+		return &PuppetAgentTestBobDevNoopAction{GenericAction{Requirements: []int{
+			keycode.KeyCodePuppet,
+			keycode.KeyCode5,
+		}}}
+	})
 }
 
 type PuppetEnableAction struct{ GenericAction }
@@ -64,6 +70,15 @@ type PuppetAgentTestBobDevAction struct{ GenericAction }
 
 func (p *PuppetAgentTestBobDevAction) Execute() {
 	err := exec.Command("xdotool", "type", "puppet agent -t --environment bob_dev\n").Run()
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+type PuppetAgentTestBobDevNoopAction struct{ GenericAction }
+
+func (p *PuppetAgentTestBobDevNoopAction) Execute() {
+	err := exec.Command("xdotool", "type", "puppet agent -t --environment bob_dev --noop\n").Run()
 	if err != nil {
 		log.Println(err)
 	}
