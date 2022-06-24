@@ -1,0 +1,12 @@
+[Unit]
+Description=keyboardchamp service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/go/bin/keyboardchamp -device /dev/input/%i
+CPUSchedulingPolicy=idle
+IOSchedulingClass=3
+
+[Install]
+WantedBy=default.target
