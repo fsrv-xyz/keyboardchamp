@@ -3,10 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	evdev "github.com/gvalkov/golang-evdev"
 	"keyboardchamp/internal/action"
 	"os"
 	"os/signal"
+
+	evdev "github.com/gvalkov/golang-evdev"
 )
 
 type Event struct {
