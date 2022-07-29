@@ -1,9 +1,10 @@
 package action
 
 import (
-	"keyboardchamp/internal/keycode"
 	"log"
 	"os/exec"
+
+	"github.com/fsrv-xyz/keyboardchamp/internal/keycode"
 )
 
 func init() {

@@ -3,11 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
-	"keyboardchamp/internal/action"
 	"os"
 	"os/signal"
 
 	evdev "github.com/gvalkov/golang-evdev"
+
+	"github.com/fsrv-xyz/keyboardchamp/internal/action"
 )
 
 type Event struct {
@@ -24,14 +25,24 @@ func init() {
 }
 
 func main() {
-	var devicePath string
+	var devicePath, deviceName string
 
-	flag.StringVar(&devicePath, "device", "", "/dev/input/event** path to keyboard")
+	flag.StringVar(&devicePath, "device.path", "", "/dev/input/event** path to keyboard")
+	flag.StringVar(&deviceName, "device.name", "SINO WEALTH Sunreed SKB886S", "name of the keyboard")
 	flag.Parse()
 
 	if devicePath == "" {
-		flag.PrintDefaults()
-		os.Exit(1)
+		devices, _ := evdev.ListInputDevices()
+		for _, device := range devices {
+			if device.Name == deviceName {
+				devicePath = device.Fn
+				break
+			}
+		}
+		if devicePath == "" {
+			fmt.Println("No device found")
+			os.Exit(1)
+		}
 	}
 	fmt.Printf("listening on %+q\n", devicePath)
 

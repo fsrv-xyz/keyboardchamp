@@ -1,8 +1,9 @@
 package action
 
 import (
-	"keyboardchamp/internal/keycode"
 	"sync"
+
+	"github.com/fsrv-xyz/keyboardchamp/internal/keycode"
 )
 
 type Action interface {

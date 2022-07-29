@@ -1,4 +1,4 @@
-module keyboardchamp
+module github.com/fsrv-xyz/keyboardchamp
 
 go 1.18
 
