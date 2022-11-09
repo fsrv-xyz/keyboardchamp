@@ -4,6 +4,7 @@ import (
 	"log"
 	"os/exec"
 
+	"github.com/fsrv-xyz/keyboardchamp/internal/helper"
 	"github.com/fsrv-xyz/keyboardchamp/internal/keycode"
 )
 
@@ -43,7 +44,9 @@ func init() {
 type PuppetEnableAction struct{ GenericAction }
 
 func (p *PuppetEnableAction) Execute() {
-	err := exec.Command("xdotool", "type", "puppet agent --enable\n").Run()
+	err := helper.RunCommandDisplayZero(
+		exec.Command("/usr/bin/xdotool", "type", "puppet agent --enable\n"),
+	)
 	if err != nil {
 		log.Println(err)
 	}
@@ -52,7 +55,9 @@ func (p *PuppetEnableAction) Execute() {
 type PuppetDisableAction struct{ GenericAction }
 
 func (p *PuppetDisableAction) Execute() {
-	err := exec.Command("xdotool", "type", "puppet agent --disable\n").Run()
+	err := helper.RunCommandDisplayZero(
+		exec.Command("/usr/bin/xdotool", "type", "puppet agent --disable\n"),
+	)
 	if err != nil {
 		log.Println(err)
 	}
@@ -61,7 +66,9 @@ func (p *PuppetDisableAction) Execute() {
 type PuppetAgentTestAction struct{ GenericAction }
 
 func (p *PuppetAgentTestAction) Execute() {
-	err := exec.Command("xdotool", "type", "puppet agent -t\n").Run()
+	err := helper.RunCommandDisplayZero(
+		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t\n"),
+	)
 	if err != nil {
 		log.Println(err)
 	}
@@ -70,7 +77,9 @@ func (p *PuppetAgentTestAction) Execute() {
 type PuppetAgentTestBobDevAction struct{ GenericAction }
 
 func (p *PuppetAgentTestBobDevAction) Execute() {
-	err := exec.Command("xdotool", "type", "puppet agent -t --environment bob_dev\n").Run()
+	err := helper.RunCommandDisplayZero(
+		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t --environment bob_dev\n"),
+	)
 	if err != nil {
 		log.Println(err)
 	}
@@ -79,7 +88,9 @@ func (p *PuppetAgentTestBobDevAction) Execute() {
 type PuppetAgentTestBobDevNoopAction struct{ GenericAction }
 
 func (p *PuppetAgentTestBobDevNoopAction) Execute() {
-	err := exec.Command("xdotool", "type", "puppet agent -t --environment bob_dev --noop\n").Run()
+	err := helper.RunCommandDisplayZero(
+		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t --environment bob_dev --noop\n"),
+	)
 	if err != nil {
 		log.Println(err)
 	}

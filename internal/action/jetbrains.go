@@ -4,6 +4,7 @@ import (
 	"log"
 	"os/exec"
 
+	"github.com/fsrv-xyz/keyboardchamp/internal/helper"
 	"github.com/fsrv-xyz/keyboardchamp/internal/keycode"
 )
 
@@ -19,7 +20,7 @@ func init() {
 type JetBrainsRenameAction struct{ GenericAction }
 
 func (j *JetBrainsRenameAction) Execute() {
-	err := exec.Command("xdotool", "key", "--", "Shift+F6").Run()
+	err := helper.RunCommandDisplayZero(exec.Command("/usr/bin/xdotool", "key", "--", "Shift+F6"))
 	if err != nil {
 		log.Println(err)
 	}
