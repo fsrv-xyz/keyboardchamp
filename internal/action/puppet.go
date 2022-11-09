@@ -27,16 +27,22 @@ func init() {
 			keycode.KeyCode3,
 		}}}
 	})
+	RegistryInstance.Register("puppet_agent_test_http-debug", func() Action {
+		return &PuppetAgentTestHTTPDebugAction{GenericAction{Requirements: []int{
+			keycode.KeyCodePuppet,
+			keycode.KeyCode4,
+		}}}
+	})
 	RegistryInstance.Register("puppet_agent_test_bob_dev", func() Action {
 		return &PuppetAgentTestBobDevAction{GenericAction{Requirements: []int{
 			keycode.KeyCodePuppet,
-			keycode.KeyCode4,
+			keycode.KeyCode5,
 		}}}
 	})
 	RegistryInstance.Register("puppet_agent_test_bob_dev_noop", func() Action {
 		return &PuppetAgentTestBobDevNoopAction{GenericAction{Requirements: []int{
 			keycode.KeyCodePuppet,
-			keycode.KeyCode5,
+			keycode.KeyCode6,
 		}}}
 	})
 }
@@ -68,6 +74,17 @@ type PuppetAgentTestAction struct{ GenericAction }
 func (p *PuppetAgentTestAction) Execute() {
 	err := helper.RunCommandDisplayZero(
 		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t\n"),
+	)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+type PuppetAgentTestHTTPDebugAction struct{ GenericAction }
+
+func (p *PuppetAgentTestHTTPDebugAction) Execute() {
+	err := helper.RunCommandDisplayZero(
+		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t --http_debug\n"),
 	)
 	if err != nil {
 		log.Println(err)
