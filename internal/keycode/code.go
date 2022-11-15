@@ -3,6 +3,7 @@ package keycode
 const (
 	KeyCodePuppet    = 96
 	KeyCodeJetBrains = 78
+	KeyCodeUpdate    = 83
 
 	KeyCodeEscape = 1
 
