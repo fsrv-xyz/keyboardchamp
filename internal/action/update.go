@@ -10,7 +10,7 @@ import (
 
 func init() {
 	RegistryInstance.Register("update_general_command", func() Action {
-		return &JetBrainsRenameAction{GenericAction{Requirements: []int{
+		return &UpdateGeneralCommandAction{GenericAction{Requirements: []int{
 			keycode.KeyCodeUpdate,
 			keycode.KeyCode1,
 		}}}
