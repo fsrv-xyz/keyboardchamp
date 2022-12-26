@@ -5,6 +5,7 @@ stages:
 
 .go_template_defaults:
   stage: test
+  allow_failure: true
 .semver_template_defaults:
   stage: release
 variables:
