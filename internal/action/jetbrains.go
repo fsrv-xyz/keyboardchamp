@@ -20,7 +20,7 @@ func init() {
 type JetBrainsRenameAction struct{ GenericAction }
 
 func (j *JetBrainsRenameAction) Execute() {
-	err := helper.RunCommandDisplayZero(exec.Command("/usr/bin/xdotool", "key", "--", "Shift+F6"))
+	err := helper.RunCommandDisplayZero(exec.Command("/usr/bin/ydotool", "key", "--", "Shift+F6"))
 	if err != nil {
 		log.Println(err)
 	}

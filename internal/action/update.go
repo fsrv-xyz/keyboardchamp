@@ -20,7 +20,7 @@ func init() {
 type UpdateGeneralCommandAction struct{ GenericAction }
 
 func (j *UpdateGeneralCommandAction) Execute() {
-	err := helper.RunCommandDisplayZero(exec.Command("/usr/bin/xdotool", "type", "apt update -y && apt upgrade -y && apt autoremove -y; pending_packages; puppet agent -t; sophia\n"))
+	err := helper.RunCommandDisplayZero(exec.Command("/usr/bin/ydotool", "type", "apt update -y && apt upgrade -y && apt autoremove -y; pending_packages; puppet agent -t; sophia\n"))
 	if err != nil {
 		log.Println(err)
 	}

@@ -4,6 +4,7 @@ const (
 	KeyCodePuppet    = 96
 	KeyCodeJetBrains = 78
 	KeyCodeUpdate    = 83
+	KeyCodeSignature = 111
 
 	KeyCodeEscape = 1
 

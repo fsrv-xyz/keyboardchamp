@@ -51,7 +51,7 @@ type PuppetEnableAction struct{ GenericAction }
 
 func (p *PuppetEnableAction) Execute() {
 	err := helper.RunCommandDisplayZero(
-		exec.Command("/usr/bin/xdotool", "type", "puppet agent --enable\n"),
+		exec.Command("/usr/bin/ydotool", "type", "puppet agent --enable\n"),
 	)
 	if err != nil {
 		log.Println(err)
@@ -62,7 +62,7 @@ type PuppetDisableAction struct{ GenericAction }
 
 func (p *PuppetDisableAction) Execute() {
 	err := helper.RunCommandDisplayZero(
-		exec.Command("/usr/bin/xdotool", "type", "puppet agent --disable\n"),
+		exec.Command("/usr/bin/ydotool", "type", "puppet agent --disable\n"),
 	)
 	if err != nil {
 		log.Println(err)
@@ -73,7 +73,7 @@ type PuppetAgentTestAction struct{ GenericAction }
 
 func (p *PuppetAgentTestAction) Execute() {
 	err := helper.RunCommandDisplayZero(
-		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t\n"),
+		exec.Command("/usr/bin/ydotool", "type", "puppet agent -t\n"),
 	)
 	if err != nil {
 		log.Println(err)
@@ -84,7 +84,7 @@ type PuppetAgentTestHTTPDebugAction struct{ GenericAction }
 
 func (p *PuppetAgentTestHTTPDebugAction) Execute() {
 	err := helper.RunCommandDisplayZero(
-		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t --http_debug\n"),
+		exec.Command("/usr/bin/ydotool", "type", "puppet agent -t --http_debug\n"),
 	)
 	if err != nil {
 		log.Println(err)
@@ -95,7 +95,7 @@ type PuppetAgentTestBobDevAction struct{ GenericAction }
 
 func (p *PuppetAgentTestBobDevAction) Execute() {
 	err := helper.RunCommandDisplayZero(
-		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t --environment bob_dev\n"),
+		exec.Command("/usr/bin/ydotool", "type", "puppet agent -t --environment bob_dev\n"),
 	)
 	if err != nil {
 		log.Println(err)
@@ -106,7 +106,7 @@ type PuppetAgentTestBobDevNoopAction struct{ GenericAction }
 
 func (p *PuppetAgentTestBobDevNoopAction) Execute() {
 	err := helper.RunCommandDisplayZero(
-		exec.Command("/usr/bin/xdotool", "type", "puppet agent -t --environment bob_dev --noop\n"),
+		exec.Command("/usr/bin/ydotool", "type", "puppet agent -t --environment bob_dev --noop\n"),
 	)
 	if err != nil {
 		log.Println(err)
